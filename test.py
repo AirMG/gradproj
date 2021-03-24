@@ -38,7 +38,7 @@ elif opt.gpu_id=='all':
 model = FastSal()
 # model = torch.nn.DataParallel(model)
 # Large epoch size may not generalize well. You can choose a good model to load according to the log file and pth files saved in ('./BBSNet_cpts/') when training.
-model.load_state_dict(torch.load('./results/demo-03-21-1/epoch_300.pth')) #'./model_pths/BBSNet_epoch_best.pth'))
+model.load_state_dict(torch.load('./results/demo-03-24-0/epoch_300.pth')) #'./model_pths/BBSNet_epoch_best.pth'))
 model.cuda()
 model.eval()
 
@@ -55,7 +55,7 @@ def save(res,gt,notation=None,sigmoid=True):
 test_datasets = [ 'NJU2K','NLPR','STERE', 'RGBD135', 'LFSD','SIP']# ['NJU2K','NLPR','STERE', 'RGBD135', 'LFSD','SIP']
 for dataset in test_datasets:
     with torch.no_grad():
-        save_path = './results/test-03-21-spatial-1/' + dataset
+        save_path = './results/test-03-24-without_bts-300pth/' + dataset
         if not os.path.exists(save_path):
             os.makedirs(save_path)
         image_root = dataset_path + dataset + '/RGB/'
